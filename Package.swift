@@ -18,10 +18,10 @@ let package = Package(
     targets: [
         .target(
             name: "MapboxWrapper",
-            path: "MapboxWrapper/Sources/MapboxWrapper",
             dependencies: [
                 .product(name: "MapboxMaps", package: "mapbox-maps-ios")
-            ]
+            ],
+            path: "MapboxWrapper/Sources/MapboxWrapper"
         ),
     ]
 )
