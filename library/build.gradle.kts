@@ -50,6 +50,7 @@ kotlin {
     swiftPackageConfig {
         create("nativeBridge") {
             minIos = "16.0"
+            spmWorkingPath = "${projectDir.resolve("SPM")}"
             dependency {
                 localPackage(
                     path = "$projectDir/../",

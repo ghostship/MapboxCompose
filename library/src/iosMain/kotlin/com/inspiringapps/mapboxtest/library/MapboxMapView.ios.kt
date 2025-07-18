@@ -8,7 +8,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.viewinterop.UIKitView
 import kotlinx.cinterop.ExperimentalForeignApi
 import platform.CoreGraphics.CGRectMake
-import platform.UIKit.UIView
 
 val wrapper = MapboxMapViewWrapper()
 
@@ -19,7 +18,7 @@ actual fun MapboxMapView(accessToken: String, modifier: Modifier) {
             wrapper.createMapViewWithBounds(
                 bounds = CGRectMake(0.0, 0.0, 0.0, 0.0),
                 token = accessToken
-            ) as UIView
+            )
         },
         modifier = modifier,
         update = { mapView -> }
