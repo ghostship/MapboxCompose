@@ -21,7 +21,7 @@ let package = Package(
             dependencies: [
                 .product(name: "MapboxMaps", package: "mapbox-maps-ios")
             ],
-            path: "MapboxWrapper/Sources/MapboxWrapper"
+            path: "./MapboxWrapper/Sources/MapboxWrapper"
         ),
     ]
 )
