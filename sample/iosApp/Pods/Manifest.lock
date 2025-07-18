@@ -1,0 +1,37 @@
+PODS:
+  - composeApp (1.0):
+    - MapboxMaps (= 11.13.3)
+  - MapboxCommon (24.13.3):
+    - Turf (= 4.0.0)
+  - MapboxCoreMaps (11.13.3):
+    - MapboxCommon (= 24.13.3)
+  - MapboxMaps (11.13.3):
+    - MapboxCommon (= 24.13.3)
+    - MapboxCoreMaps (= 11.13.3)
+    - Turf (= 4.0.0)
+  - Turf (4.0.0)
+
+DEPENDENCIES:
+  - composeApp (from `../composeApp`)
+
+SPEC REPOS:
+  trunk:
+    - MapboxCommon
+    - MapboxCoreMaps
+    - MapboxMaps
+    - Turf
+
+EXTERNAL SOURCES:
+  composeApp:
+    :path: "../composeApp"
+
+SPEC CHECKSUMS:
+  composeApp: ad8ff3837ba8fa53658444fa47a84be305ed26d9
+  MapboxCommon: 2bcc5f4477943750ecd5ab3a46e9375761deb4df
+  MapboxCoreMaps: 61c6137cf359898c7d4e20cd1cede6c8e814b348
+  MapboxMaps: 597037989a759d27d7d88240822457351bce2197
+  Turf: c9eb11a65d96af58cac523460fd40fec5061b081
+
+PODFILE CHECKSUM: 86dce7ef2fd408d3a74714dfd70dc2f26aa5fa15
+
+COCOAPODS: 1.16.2
