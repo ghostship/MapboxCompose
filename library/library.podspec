@@ -1,20 +1,20 @@
 Pod::Spec.new do |spec|
     spec.name                     = 'library'
     spec.version                  = '1.0'
-    spec.homepage                 = 'MapboxMapView Library'
+    spec.homepage                 = ''
     spec.source                   = { :http=> ''}
     spec.authors                  = ''
     spec.license                  = ''
-    spec.summary                  = 'Crossplatform MapBox Map View Library'
-    spec.vendored_frameworks      = 'build/cocoapods/framework/composeApp.framework'
+    spec.summary                  = ''
+    spec.vendored_frameworks      = 'build/cocoapods/framework/library.framework'
     spec.libraries                = 'c++'
-    spec.ios.deployment_target    = '16.0'
-    spec.dependency 'MapboxWrapper', '0.1.0'
                 
-    if !Dir.exist?('build/cocoapods/framework/composeApp.framework') || Dir.empty?('build/cocoapods/framework/composeApp.framework')
+                
+                
+    if !Dir.exist?('build/cocoapods/framework/library.framework') || Dir.empty?('build/cocoapods/framework/library.framework')
         raise "
 
-        Kotlin framework 'composeApp' doesn't exist yet, so a proper Xcode project can't be generated.
+        Kotlin framework 'library' doesn't exist yet, so a proper Xcode project can't be generated.
         'pod install' should be executed after running ':generateDummyFramework' Gradle task:
 
             ./gradlew :library:generateDummyFramework
@@ -28,7 +28,7 @@ Pod::Spec.new do |spec|
                 
     spec.pod_target_xcconfig = {
         'KOTLIN_PROJECT_PATH' => ':library',
-        'PRODUCT_MODULE_NAME' => 'composeApp',
+        'PRODUCT_MODULE_NAME' => 'library',
     }
                 
     spec.script_phases = [

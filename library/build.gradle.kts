@@ -5,7 +5,7 @@ plugins {
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.kotlinCocoapods)
     id("maven-publish")
-    id("io.github.ttypic.swiftklib") version "0.6.4"
+    id("io.github.frankois944.spmForKmp") version "0.11.3"
 }
 
 group = "com.inspiringapps.libs"
@@ -34,26 +34,58 @@ kotlin {
         }
     }
 
-    iosX64()
-    iosArm64()
-    iosSimulatorArm64()
-
-    cocoapods {
-        homepage = "MapboxMapView Library"
-        summary = "Crossplatform MapBox Map View Library"
-        version = "1.0"
-        ios.deploymentTarget = "16.0"
-
-        framework {
-            baseName = "composeApp"
-        }
-
-        pod("MapboxWrapper") {
-            version = "0.1.0"
-            extraOpts += listOf("-compiler-option", "-fmodules")
-            source = path(project.file("../MapboxWrapper"))
+    listOf(
+        iosX64(),
+        iosArm64(),
+        iosSimulatorArm64(),
+    ).forEach {
+        it.compilations {
+            val main by getting {
+                // Choose the cinterop name
+                cinterops.create("nativeBridge")
+            }
         }
     }
+
+    swiftPackageConfig {
+        create("nativeBridge") {
+            minIos = "16.0"
+            dependency {
+                localPackage(
+                    path = "$projectDir/../",
+                    packageName = "MapboxCompose",
+                    products = {
+                        add("MapboxWrapper", exportToKotlin = true)
+                    }
+                )
+//                remotePackageBranch(
+//                    packageName = "MapboxCompose",
+//                    url = uri("https://github.com/ghostship/MapboxCompose.git"),
+//                    branch = "main",
+//                    products = {
+//                        add("MapboxWrapper", exportToKotlin = true)
+//                    }
+//                )
+            }
+        }
+    }
+
+//    cocoapods {
+//        homepage = "MapboxMapView Library"
+//        summary = "Crossplatform MapBox Map View Library"
+//        version = "1.0"
+//        ios.deploymentTarget = "16.0"
+//
+//        framework {
+//            baseName = "composeApp"
+//        }
+//
+//        pod("MapboxWrapper") {
+//            version = "0.1.0"
+//            extraOpts += listOf("-compiler-option", "-fmodules")
+//            source = path(project.file("../MapboxWrapper"))
+//        }
+//    }
 
     sourceSets {
         commonMain {

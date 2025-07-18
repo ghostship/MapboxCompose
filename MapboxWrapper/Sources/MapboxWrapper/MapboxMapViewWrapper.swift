@@ -2,9 +2,11 @@
 import UIKit
 import MapboxMaps
 
+@objcMembers public class MyDummyView: UIView {}
+
 @objc
 public class MapboxMapViewWrapper: NSObject {
-    
+
     @objc
     public func createMapView(bounds: CGRect, token: String) -> UIView {
         MapboxOptions.accessToken = token
@@ -19,5 +21,14 @@ public class MapboxMapViewWrapper: NSObject {
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
         return view
+    }
+}
+
+@objcMembers public class MySwiftBridge: NSObject {
+    public func exportedMethod() -> String {
+        return "value"
+    }
+    public func exportedView() -> NSObject {
+        return UIView()
     }
 }
